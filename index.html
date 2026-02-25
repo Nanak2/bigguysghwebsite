@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Big Guys Wine & Liquor – Ashongman Estate, Ghana</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:wght@300;400;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C0152A;
+    --red-dark: #8B0D1C;
+    --red-light: #E8253C;
+    --gold: #D4A843;
+    --white: #FDFAF7;
+    --off-white: #F5EFE8;
+    --dark: #1A0A0A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Cormorant Garamond', serif;
+    background: var(--white);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--red-dark);
+    background-image:
+      radial-gradient(ellipse at 20% 50%, rgba(192,21,42,0.6) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(212,168,67,0.15) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 60px,
+      rgba(255,255,255,0.02) 60px,
+      rgba(255,255,255,0.02) 61px
+    );
+  }
+
+  .logo-circle {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.2), 0 20px 60px rgba(0,0,0,0.4);
+    animation: fadeDown 0.8s ease both;
+    overflow: hidden;
+  }
+
+  .logo-circle img {
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 10vw, 6rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    animation: fadeUp 0.9s 0.2s ease both;
+  }
+
+  .hero-sub {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1rem, 4vw, 1.6rem);
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-top: 0.5rem;
+    animation: fadeUp 0.9s 0.35s ease both;
+  }
+
+  .hero-desc {
+    max-width: 500px;
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+    margin: 1.5rem auto 2.5rem;
+    font-weight: 300;
+    animation: fadeUp 0.9s 0.5s ease both;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeUp 0.9s 0.65s ease both;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 2rem;
+    border-radius: 2px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-white {
+    background: var(--white);
+    color: var(--red-dark);
+  }
+  .btn-white:hover { background: var(--off-white); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid rgba(255,255,255,0.5);
+  }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+    color: rgba(255,255,255,0.4);
+    font-size: 1.5rem;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 2rem;
+    margin: 2rem 0;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--red), transparent);
+  }
+  .divider-icon { color: var(--gold); font-size: 1.4rem; }
+
+  /* ── SECTION ── */
+  section { padding: 5rem 1.5rem; }
+
+  .section-label {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.3em;
+    font-size: 0.8rem;
+    color: var(--red);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .section-body {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #5A3030;
+    font-weight: 300;
+  }
+
+  /* ── CATEGORIES ── */
+  .categories {
+    background: var(--off-white);
+  }
+
+  .categories-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .drink-card {
+    background: white;
+    border-radius: 4px;
+    padding: 2rem 1rem 1.5rem;
+    text-align: center;
+    border-bottom: 3px solid var(--red);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: default;
+  }
+
+  .drink-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(192,21,42,0.15);
+  }
+
+  .drink-icon { font-size: 2.8rem; margin-bottom: 0.75rem; display: block; }
+  .drink-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--dark);
+    margin-bottom: 0.3rem;
+  }
+  .drink-note {
+    font-size: 0.85rem;
+    color: #999;
+    font-style: italic;
+  }
+
+  /* ── WHATSAPP ORDER ── */
+  .order {
+    background: var(--red-dark);
+    background-image: radial-gradient(ellipse at 70% 50%, rgba(192,21,42,0.5) 0%, transparent 70%);
+    color: white;
+    text-align: center;
+  }
+
+  .order .section-title { color: white; }
+  .order .section-body { color: rgba(255,255,255,0.75); max-width: 520px; margin: 0 auto 2rem; }
+
+  .wa-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 420px;
+    margin: 0 auto 2.5rem;
+    text-align: left;
+  }
+
+  .wa-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: rgba(255,255,255,0.07);
+    border-radius: 4px;
+    padding: 1rem 1.2rem;
+    border-left: 3px solid var(--gold);
+  }
+
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    color: var(--gold);
+    line-height: 1;
+    min-width: 28px;
+  }
+
+  .step-text { font-size: 0.95rem; color: rgba(255,255,255,0.85); line-height: 1.5; padding-top: 0.2rem; }
+
+  .btn-wa {
+    background: #25D366;
+    color: white;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    border-radius: 2px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.15em;
+    transition: all 0.3s;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+  }
+  .btn-wa:hover { background: #1ebe5c; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(37,211,102,0.4); }
+
+  /* ── PAYMENT ── */
+  .payment { background: var(--white); text-align: center; }
+  .payment-inner { max-width: 700px; margin: 0 auto; }
+
+  .momo-box {
+    background: linear-gradient(135deg, var(--red-dark), var(--red));
+    color: white;
+    border-radius: 8px;
+    padding: 2.5rem 2rem;
+    margin: 2rem auto;
+    box-shadow: 0 8px 40px rgba(192,21,42,0.25);
+  }
+
+  .momo-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.5rem;
+  }
+
+  .momo-sub { font-size: 1rem; color: rgba(255,255,255,0.8); margin-bottom: 1.5rem; }
+
+  .momo-methods {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .momo-badge {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 30px;
+    padding: 0.5rem 1.2rem;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.1em;
+    font-size: 0.9rem;
+  }
+
+  .delivery-banner {
+    background: var(--off-white);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 4px 4px 0;
+    padding: 1.2rem 1.5rem;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1rem;
+    color: #5A3030;
+  }
+
+  .delivery-icon { font-size: 2rem; flex-shrink: 0; }
+
+  /* ── CONTACT ── */
+  .contact { background: var(--off-white); }
+  .contact-inner { max-width: 700px; margin: 0 auto; }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .contact-card {
+    background: white;
+    border-radius: 4px;
+    padding: 1.8rem;
+    border-top: 3px solid var(--red);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+
+  .contact-card-label {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.2em;
+    font-size: 0.75rem;
+    color: var(--red);
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-card-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.4;
+  }
+
+  .contact-card a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .contact-card a:hover { color: var(--red); }
+
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #E1306C, #833AB4);
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border-radius: 2px;
+    text-decoration: none;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.15em;
+    margin-top: 2rem;
+    font-size: 1rem;
+    transition: all 0.3s;
+    box-shadow: 0 4px 16px rgba(131,58,180,0.3);
+  }
+  .social-link:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(131,58,180,0.4); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+  footer span { color: var(--gold); }
+
+  /* ── FLOATING WA BUTTON ── */
+  .float-wa {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 999;
+    background: #25D366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 24px rgba(37,211,102,0.4);
+    text-decoration: none;
+    font-size: 1.8rem;
+    animation: pulse-wa 3s infinite;
+    transition: transform 0.3s;
+  }
+  .float-wa:hover { transform: scale(1.1); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes bounce {
+    0%,100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+  @keyframes pulse-wa {
+    0%,100% { box-shadow: 0 4px 24px rgba(37,211,102,0.4); }
+    50% { box-shadow: 0 4px 40px rgba(37,211,102,0.7); }
+  }
+</style>
+</head>
+<body>
+
+<!-- FLOATING WHATSAPP -->
+<a class="float-wa" href="https://wa.me/233244115312" target="_blank" title="Order on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="logo-circle">
+    <img src="1772026171497_image.png" alt="Big Guys Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='🍷'">
+  </div>
+  <h1 class="hero-title">Big Guys</h1>
+  <p class="hero-sub">Wine &amp; Liquor · Est. Ashongman</p>
+  <p class="hero-desc">Your premium destination for wines, spirits, and fine beverages in Ashongman Estate, Ghana. Whether you're celebrating, gifting, or simply unwinding — we've got your pour.</p>
+  <div class="hero-btns">
+    <a href="https://wa.me/233244115312" class="btn btn-white" target="_blank">
+      🛒 Order on WhatsApp
+    </a>
+    <a href="#contact" class="btn btn-outline">
+      📍 Find Us
+    </a>
+  </div>
+  <div class="scroll-hint">↓</div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories">
+  <div class="categories-inner">
+    <span class="section-label">Our Selection</span>
+    <h2 class="section-title">Drinks for Every Occasion</h2>
+    <p class="section-body">From everyday sips to premium celebrations, we carry a curated selection of fine beverages.</p>
+    <div class="card-grid">
+      <div class="drink-card">
+        <span class="drink-icon">🍷</span>
+        <div class="drink-name">Red Wines</div>
+        <div class="drink-note">Cabernet, Merlot & more</div>
+      </div>
+      <div class="drink-card">
+        <span class="drink-icon">🥂</span>
+        <div class="drink-name">White & Rosé</div>
+        <div class="drink-note">Crisp & refreshing</div>
+      </div>
+      <div class="drink-card">
+        <span class="drink-icon">🥃</span>
+        <div class="drink-name">Whisky & Bourbon</div>
+        <div class="drink-note">Scotch, Irish & American</div>
+      </div>
+      <div class="drink-card">
+        <span class="drink-icon">🍾</span>
+        <div class="drink-name">Champagne</div>
+        <div class="drink-note">Perfect for celebrations</div>
+      </div>
+      <div class="drink-card">
+        <span class="drink-icon">🍸</span>
+        <div class="drink-name">Spirits & Gin</div>
+        <div class="drink-note">Vodka, Rum, Gin & more</div>
+      </div>
+      <div class="drink-card">
+        <span class="drink-icon">🍺</span>
+        <div class="drink-name">Beers</div>
+        <div class="drink-note">Local & imported</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER VIA WHATSAPP -->
+<section class="order">
+  <span class="section-label" style="color:var(--gold)">Quick &amp; Easy</span>
+  <h2 class="section-title">Order via WhatsApp</h2>
+  <p class="section-body">No app needed. Just message us and we'll sort your order in minutes.</p>
+
+  <div class="wa-steps">
+    <div class="wa-step">
+      <span class="step-num">1</span>
+      <p class="step-text">Tap the button below to open WhatsApp chat with us</p>
+    </div>
+    <div class="wa-step">
+      <span class="step-num">2</span>
+      <p class="step-text">Send us what you'd like — drink name, quantity &amp; delivery address</p>
+    </div>
+    <div class="wa-step">
+      <span class="step-num">3</span>
+      <p class="step-text">Confirm your order &amp; pay via MoMo or cash on delivery</p>
+    </div>
+  </div>
+
+  <a href="https://wa.me/233244115312?text=Hi%20Big%20Guys!%20I'd%20like%20to%20place%20an%20order%20🍷" class="btn-wa" target="_blank">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Chat &amp; Order Now
+  </a>
+</section>
+
+<!-- PAYMENT & DELIVERY -->
+<section class="payment">
+  <div class="payment-inner">
+    <span class="section-label">Payments &amp; Delivery</span>
+    <h2 class="section-title">Pay Your Way</h2>
+
+    <div class="momo-box">
+      <div class="momo-title">📱 MoMo Accepted</div>
+      <p class="momo-sub">We accept all major Mobile Money networks. Quick, safe &amp; easy.</p>
+      <div class="momo-methods">
+        <span class="momo-badge">MTN MoMo</span>
+        <span class="momo-badge">Telecel Cash</span>
+        <span class="momo-badge">AirtelTigo Money</span>
+        <span class="momo-badge">Cash</span>
+      </div>
+    </div>
+
+    <div class="delivery-banner">
+      <span class="delivery-icon">🛵</span>
+      <div>
+        <strong style="font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--dark);">Delivery Available</strong><br>
+        We deliver within Ashongman Estate and nearby areas. Message us on WhatsApp to confirm your delivery zone and get an estimated time.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <span class="section-label">Get In Touch</span>
+    <h2 class="section-title">Find Us</h2>
+    <p class="section-body">Walk in, call us, or order from the comfort of your home.</p>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-card-label">📍 Location</div>
+        <div class="contact-card-value">Ashongman Estate<br>2nd Lotto Kiosk, Accra</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-label">📞 Call Us</div>
+        <div class="contact-card-value">
+          <a href="tel:+233244115312">0244 115 312</a><br>
+          <a href="tel:+233557490950">0557 490 950</a>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-label">💬 WhatsApp</div>
+        <div class="contact-card-value">
+          <a href="https://wa.me/233244115312" target="_blank">0244 115 312</a>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-label">🕐 Hours</div>
+        <div class="contact-card-value">Mon – Sun<br>9:00 AM – 10:00 PM</div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:2rem;">
+      <a href="https://www.instagram.com/biguys_wine_liquor?igsh=cXMwb3k5ZTBsa3I=" target="_blank" class="social-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        Follow on Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <span>Big Guys Wine &amp; Liquor</span> · Ashongman Estate, Accra, Ghana</p>
+  <p style="margin-top:0.5rem; font-size:0.8rem;">Drink Responsibly · 18+ Only</p>
+</footer>
+
+</body>
+</html>
